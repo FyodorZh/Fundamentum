@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fundamentum.Memoria", "Fundamentum.Memoria\Fundamentum.Memoria.csproj", "{A511D9CB-C654-4B95-B944-988DC80B6F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fundamentum.Collections", "Fundamentum.Collections\Fundamentum.Collections.csproj", "{413F1D62-BF4C-4F12-93A3-B1066C239361}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

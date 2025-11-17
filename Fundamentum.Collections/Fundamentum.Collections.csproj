@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <Version>0.1.1-dev.1</Version>
+        <Title>Fundamentum.Collections</Title>
+        <Authors>Fyodor Zhmaev</Authors>
+        <Description>Collections library</Description>
+        <Copyright>Copyright (c) Fyodor Zhmaev 2025</Copyright>
+        <PackageProjectUrl>https://github.com/FyodorZh/Fundamentum</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/FyodorZh/Fundamentum.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1-dev.5</Version>
+        <Authors>Fyodor Zhmaev</Authors>
+        <Copyright>Copyright (c) Fyodor Zhmaev 2025 </Copyright>
+        <PackageProjectUrl>https://github.com/FyodorZh/Fundamentum</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/FyodorZh/Fundamentum</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Company>FyodorZh</Company>
+        <Product>Fundamentum</Product>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+</Project>
