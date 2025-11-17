@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fundamentum.Memoria", "Fundamentum.Memoria\Fundamentum.Memoria.csproj", "{A511D9CB-C654-4B95-B944-988DC80B6F02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memoria", "Actuarius.Memoria\Actuarius.Memoria.csproj", "{A511D9CB-C654-4B95-B944-988DC80B6F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fundamentum.Collections", "Fundamentum.Collections\Fundamentum.Collections.csproj", "{413F1D62-BF4C-4F12-93A3-B1066C239361}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Collections", "Actuarius.Collections\Actuarius.Collections.csproj", "{413F1D62-BF4C-4F12-93A3-B1066C239361}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
