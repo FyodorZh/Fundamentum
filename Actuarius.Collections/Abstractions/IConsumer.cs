@@ -12,4 +12,11 @@
         /// <returns> FALSE если положить элемент не удалось. Например, исчерпана ёмкость коллекции или что угодно другое </returns>
         bool Put(TData value);
     }
+    
+    /// <summary>
+    /// Многопоточный потребитель данных
+    /// </summary>
+    public interface IConcurrentConsumer<in TData> : IConsumer<TData>
+    {
+    }
 }

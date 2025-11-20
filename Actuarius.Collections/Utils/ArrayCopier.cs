@@ -1,4 +1,4 @@
-namespace Actuarius
+namespace Actuarius.Collections.Internal
 {
     public static class ArrayCopier<T>
     {

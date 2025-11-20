@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Actuarius.Collections.Internal;
 
 namespace Actuarius.Collections
 {

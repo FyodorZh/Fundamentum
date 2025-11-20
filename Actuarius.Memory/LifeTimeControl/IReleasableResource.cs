@@ -1,4 +1,4 @@
-namespace Actuarius.Memoria
+namespace Actuarius.Memory
 {
     /// <summary>
     /// Любой объект допускающий владение собой

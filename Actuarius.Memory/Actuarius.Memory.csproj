@@ -22,4 +22,8 @@
       <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Actuarius.Collections\Actuarius.Collections.csproj" />
+    </ItemGroup>
+
 </Project>

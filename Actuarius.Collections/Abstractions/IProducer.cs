@@ -14,4 +14,11 @@ namespace Actuarius.Collections
         /// <returns> FALSE если очередной элемент получить не удалось </returns>
         bool TryPop([MaybeNullWhen(false)] out TData value);
     }
+    
+    /// <summary>
+    /// Многопоточный источник данных
+    /// </summary>
+    public interface IConcurrentProducer<TData> : IProducer<TData>
+    {
+    }
 }

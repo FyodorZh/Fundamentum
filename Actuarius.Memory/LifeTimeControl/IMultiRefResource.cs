@@ -1,9 +1,9 @@
-﻿namespace Actuarius.Memoria
+﻿namespace Actuarius.Memory
 {
     /// <summary>
     /// Объект у которого есть много владельцев
     /// </summary>
-    public interface IMultiRef : IReleasableResource
+    public interface IMultiRefResource : IReleasableResource
     {
         /// <summary>
         /// TRUE если объект имеет хотя бы одного владельца
@@ -14,5 +14,15 @@
         /// Увеличивает число владельцев на 1
         /// </summary>
         void AddRef();
+    }
+    
+    public static class IMultiRefResource_Ext
+    {
+        public static T Acquire<T>(this T element)
+            where T : class, IMultiRefResource
+        {
+            element.AddRef();
+            return element;
+        }
     }
 }

@@ -1,8 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memoria", "Actuarius.Memoria\Actuarius.Memoria.csproj", "{A511D9CB-C654-4B95-B944-988DC80B6F02}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Collections", "Actuarius.Collections\Actuarius.Collections.csproj", "{413F1D62-BF4C-4F12-93A3-B1066C239361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Collections.Tests", "Tests\Actuarius.Collections.Tests\Actuarius.Collections.Tests.csproj", "{4E365043-F6EB-4738-A0DA-3DF565C5AD2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memory.Tests", "Tests\Actuarius.Memory.Tests\Actuarius.Memory.Tests.csproj", "{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE512524-D84C-4442-8D5B-12AA612CDDA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memory", "Actuarius.Memory\Actuarius.Memory.csproj", "{235F98D4-EC46-4967-857A-02BF8F27F1EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,13 +16,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A511D9CB-C654-4B95-B944-988DC80B6F02}.Release|Any CPU.Build.0 = Release|Any CPU
 		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{413F1D62-BF4C-4F12-93A3-B1066C239361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E} = {DE512524-D84C-4442-8D5B-12AA612CDDA2}
+		{8EE7E84C-EFAC-4F7E-AEC0-1A03D00F4B87} = {DE512524-D84C-4442-8D5B-12AA612CDDA2}
 	EndGlobalSection
 EndGlobal
