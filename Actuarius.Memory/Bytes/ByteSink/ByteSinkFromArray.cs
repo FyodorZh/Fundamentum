@@ -1,15 +1,9 @@
 ﻿namespace Actuarius.Memory
 {
-    public class ByteSinkFromArray : IByteSink
+    public class ByteSinkFromArray : MultiRefCollectableResource<ByteSinkFromArray>, IByteSink
     {
         private int _position;
-        private IByteArray _array;
-        
-        public ByteSinkFromArray(IByteArray array, int startPosition)
-        {
-            _array = array;
-            _position = startPosition;
-        }
+        private IByteArray _array = null!;
         
         public void Reset(IByteArray array, int startPosition = 0)
         {
@@ -40,6 +34,17 @@
             }
 
             return false;
+        }
+
+        protected override void OnCollected()
+        {
+            _array = null!;
+            _position = 0;
+        }
+
+        protected override void OnRestored()
+        {
+            // DO NOTHING
         }
     }
 }

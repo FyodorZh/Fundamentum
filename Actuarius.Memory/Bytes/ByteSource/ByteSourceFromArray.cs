@@ -2,17 +2,11 @@
 
 namespace Actuarius.Memory
 {
-    public class ByteSourceFromArray : IByteSource
+    public class ByteSourceFromArray : MultiRefCollectableResource<ByteSourceFromArray>, IByteSource
     {
         private int _position;
-        private IReadOnlyByteArray _array;
+        private IReadOnlyByteArray _array = null!;
         
-        public ByteSourceFromArray(IByteArray array, int startPosition)
-        {
-            _array = array;
-            _position = startPosition;
-        }
-
         public void Reset(IReadOnlyByteArray array, int startPosition = 0)
         {
             _position = startPosition;
@@ -41,6 +35,17 @@ namespace Actuarius.Memory
             }
 
             return false;
+        }
+
+        protected override void OnCollected()
+        {
+            _array = null!;
+            _position = 0;
+        }
+
+        protected override void OnRestored()
+        {
+            // DO NOTHING
         }
     }
 }
