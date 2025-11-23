@@ -5,7 +5,7 @@
         private IMultiRefResourceOwner<IByteArray>? _source;
         
         public MultiRefByteArraySpan(IMultiRefResourceOwner<IByteArray> source, int offset, int count) 
-            : this(source.ShowUnsafe(), offset, count)
+            : this(source.ShowResourceUnsafe(), offset, count)
         {
             _source = source.Acquire();
         }

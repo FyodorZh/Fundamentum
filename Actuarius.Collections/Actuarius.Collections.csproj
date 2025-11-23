@@ -33,10 +33,5 @@
         <None Include="nuget.readme.md" Pack="true" PackagePath="\" />
         <None Include="..\LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Enumerators\" />
-      <Folder Include="Extensions\" />
-    </ItemGroup>
 
 </Project>

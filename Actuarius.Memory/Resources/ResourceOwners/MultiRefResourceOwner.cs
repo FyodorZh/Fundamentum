@@ -19,12 +19,7 @@ namespace Actuarius.Memory
             _resource = resource;
         }
         
-        public ReleasableResourceAccessor<TResource> GetAccessor()
-        {
-            return new ReleasableResourceAccessor<TResource>(Resource, this.Acquire());
-        }
-
-        public TResource ShowUnsafe()
+        public TResource ShowResourceUnsafe()
         {
             return _resource ?? throw new NullReferenceException($"{GetType()}: access after final release");
         }

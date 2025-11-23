@@ -22,4 +22,20 @@ namespace Actuarius.Memory
         /// <returns> В случае неуспеха возвращает false. Данные в приёмнике остаются в неопределённом состоянии</returns>
         bool CopyTo(byte[] dst, int dstOffset, int srcOffset, int count);
     }
+
+    public static class IReadOnlyBytes_Ext
+    {
+        public static byte[]? ToArray(this IReadOnlyBytes self, IPool<byte[], int>? pool)
+        {
+            if (!self.IsValid)
+            {
+                return null;
+            }
+
+            int count = self.Count;
+            byte[] bytes = pool?.Acquire(count) ?? new byte[count];
+            self.CopyTo(bytes, 0, 0, count);
+            return bytes;
+        }
+    }
 }
