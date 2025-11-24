@@ -8,12 +8,12 @@ namespace Actuarius.Memory
         private readonly int _offset;
         private readonly int _count;
         
-        public MultiRefByteArray(byte[] array, int offset, int count) 
+        public MultiRefByteArray(byte[] array, int offset = 0, int count = -1) 
             : base(false)
         {
             _array = array;
             _offset = offset;
-            _count = count;
+            _count = count < 0 ? array.Length : count;
         }
 
         protected override void OnReleased()

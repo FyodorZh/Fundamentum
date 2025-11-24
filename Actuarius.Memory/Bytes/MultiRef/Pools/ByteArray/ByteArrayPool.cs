@@ -11,7 +11,7 @@
 
         public void Release(IMultiRefByteArray? resource)
         {
-            throw new System.NotImplementedException();
+            // DO NOTHING. OR Collect MultiRefByteArrayFromPool instance
         }
 
         public IMultiRefByteArray Acquire(int param0)
