@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memory", "Actuari
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.ConcurrentPrimitives", "Actuarius.ConcurrentPrimitives\Actuarius.ConcurrentPrimitives.csproj", "{5B448574-2298-4BD1-80C9-F3A04E63588A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.PeriodicLogic", "Actuarius.PeriodicLogic\Actuarius.PeriodicLogic.csproj", "{37E6E755-A59C-4F05-B06A-8EA4DD6EE5E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37E6E755-A59C-4F05-B06A-8EA4DD6EE5E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37E6E755-A59C-4F05-B06A-8EA4DD6EE5E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37E6E755-A59C-4F05-B06A-8EA4DD6EE5E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37E6E755-A59C-4F05-B06A-8EA4DD6EE5E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E} = {DE512524-D84C-4442-8D5B-12AA612CDDA2}

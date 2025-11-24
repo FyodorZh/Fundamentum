@@ -8,7 +8,7 @@ namespace Actuarius.Memory
 
     public static class IMultiRefResourceOwner_Ext
     {
-        public static ReleasableResourceAccessor<TResource> GetAccessor<TResource>(this IMultiRefResourceOwner<TResource> owner)
+        public static ReleasableResourceAccessor<TResource> ExposeAccessorOnce<TResource>(this IMultiRefResourceOwner<TResource> owner)
             where TResource : class
         {
             return new ReleasableResourceAccessor<TResource>(owner.ShowResourceUnsafe(), owner.Acquire());

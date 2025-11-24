@@ -3,7 +3,11 @@ using System.Threading;
 
 namespace Actuarius.Memory
 {
-    public class MultiRefResourceOwner<TResource> : MultiRefResource, IMultiRefResourceOwner<TResource>
+    /// <summary>
+    /// Управляет ресурсом полученным из пула
+    /// </summary>
+    /// <typeparam name="TResource"></typeparam>
+    public class PoolableResourceOwner<TResource> : MultiRefResource, IMultiRefResourceOwner<TResource>
         where TResource : class
     {
         private readonly IPoolSink<TResource> _poolSink;
@@ -12,7 +16,7 @@ namespace Actuarius.Memory
 
         private TResource Resource => _resource ?? throw new Exception($"{GetType()}: access after final release");
 
-        public MultiRefResourceOwner(TResource resource, IPoolSink<TResource> poolSink) 
+        public PoolableResourceOwner(TResource resource, IPoolSink<TResource> poolSink) 
             : base(false)
         {
             _poolSink = poolSink;

@@ -6,16 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    </PropertyGroup>
-
     <ItemGroup>
       <ProjectReference Include="..\Actuarius.Collections\Actuarius.Collections.csproj" />
+      <ProjectReference Include="..\Actuarius.ConcurrentPrimitives\Actuarius.ConcurrentPrimitives.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Scriba" Version="0.1.0-dev.1" />
     </ItemGroup>
 
 </Project>
