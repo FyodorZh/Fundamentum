@@ -1,10 +1,14 @@
-﻿namespace Actuarius.Memory
+﻿using Actuarius.Collections;
+
+namespace Actuarius.Memory
 {
     public interface IMemoryRental
     {
         IConcurrentPool<byte[], int> BytesPool { get; }
         IConcurrentPool<IMultiRefByteArray, int> ByteArraysPool { get; }
         ICollectablePool CollectablePool { get; }
+        IGenericConcurrentPool SmallObjectsPool { get; }
+        IGenericConcurrentPool BigObjectsPool { get; }
     }
 
     public class MemoryRental : IMemoryRental
@@ -14,6 +18,9 @@
         public IConcurrentPool<byte[], int> BytesPool { get; }
         public IConcurrentPool<IMultiRefByteArray, int> ByteArraysPool { get; }
         public ICollectablePool CollectablePool { get; }
+
+        public IGenericConcurrentPool SmallObjectsPool { get; }
+        public IGenericConcurrentPool BigObjectsPool { get; }
 
         public MemoryRental()
         {
@@ -42,7 +49,10 @@
                 return 0;
             });
             ByteArraysPool = new ByteArrayConcurrentPool(BytesPool);
-            CollectablePool = new CollectablePool(100);
+            CollectablePool = new CollectablePool(() => new LimitedConcurrentQueue<object>(100));
+
+            SmallObjectsPool = new GenericConcurrentPool(1000, 100, 10);
+            BigObjectsPool = new GenericConcurrentPool(1000, 10, 2);
         }
     }
 }

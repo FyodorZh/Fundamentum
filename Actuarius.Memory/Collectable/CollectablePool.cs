@@ -19,13 +19,12 @@ namespace Actuarius.Memory
         private readonly Func<object>?[] _constructors = new Func<object>?[MaxTypeId];
         private readonly CollectablePoolCore _pool;
            
-        public CollectablePool(int capacity)
+        public CollectablePool(Func<IConcurrentUnorderedCollection<object>> singleTypePool)
         {
-            _pool = new CollectablePoolCore(_constructors, capacity);
+            _pool = new CollectablePoolCore(_constructors, singleTypePool);
         }
         
-        public TResource Acquire<TResource>() 
-            where TResource : class, ICollectableResource<TResource>, new()
+        public TResource Acquire<TResource>() where TResource : class, ICollectableResource<TResource>, new()
         {
             int typeId = TypeMap<TResource>.TypeId;
             _constructors[typeId] ??= () => new TResource();
@@ -39,20 +38,20 @@ namespace Actuarius.Memory
         private class CollectablePoolCore : ConcurrentPool<object, int>
         {
             private readonly Func<object>?[] _constructors;
-            private readonly int _capacity;
+            private readonly Func<IConcurrentUnorderedCollection<object>> _concurrentQueueFactory;
             
-            public CollectablePoolCore(Func<object>?[] constructors, int capacity) 
+            public CollectablePoolCore(Func<object>?[] constructors, Func<IConcurrentUnorderedCollection<object>> concurrentQueueFactory) 
                 : base(new SynchronizedConcurrentDictionary<int, IConcurrentPool<object>>())
             {
                 _constructors = constructors;
-                _capacity = capacity;
+                _concurrentQueueFactory = concurrentQueueFactory;
             }
 
             protected override IConcurrentPool<object> CreatePool(int typeId)
             {
                 return new ConcurrentDelegatePool<object>(
                     _constructors[typeId] ?? throw new Exception("Collectable pool internal error"), 
-                    new LimitedConcurrentQueue<object>(_capacity));
+                    _concurrentQueueFactory.Invoke());
             }
 
             protected override int Classify(object resource)

@@ -5,41 +5,41 @@ namespace Actuarius.Memory.ConcurrentBuffered
 {
     public class Bucket<TObject>
     {
-        private readonly Func<TObject> mCtor;
-        private readonly TObject?[] mPool;
-        private readonly int mCapacity;
+        private readonly Func<TObject> _ctor;
+        private readonly TObject?[] _table;
+        private readonly int _capacity;
 
-        private int mRealObjectsNumber;
-        private int mVirtualObjectsNumber;
+        private int _realObjectsNumber;
+        private int _virtualObjectsNumber;
 
         public Bucket(int capacity, Func<TObject> ctor)
         {
-            mCtor = ctor;
-            mPool = new TObject[capacity];
-            mCapacity = capacity;
-            mRealObjectsNumber = 0;
-            mVirtualObjectsNumber = 0;
+            _ctor = ctor;
+            _table = new TObject[capacity];
+            _capacity = capacity;
+            _realObjectsNumber = 0;
+            _virtualObjectsNumber = 0;
         }
 
         public void LazyFill()
         {
-            mVirtualObjectsNumber = mCapacity - mRealObjectsNumber;
+            _virtualObjectsNumber = _capacity - _realObjectsNumber;
         }
 
         public bool TryPop([MaybeNullWhen(false)] out TObject value)
         {
-            if (mRealObjectsNumber > 0)
+            if (_realObjectsNumber > 0)
             {
-                int id = --mRealObjectsNumber;
-                value = mPool[id]!;
-                mPool[id] = default;
+                int id = --_realObjectsNumber;
+                value = _table[id]!;
+                _table[id] = default;
                 return true;
             }
 
-            if (mVirtualObjectsNumber > 0)
+            if (_virtualObjectsNumber > 0)
             {
-                mVirtualObjectsNumber -= 1;
-                value = mCtor.Invoke();
+                _virtualObjectsNumber -= 1;
+                value = _ctor.Invoke();
                 return true;
             }
 
@@ -49,15 +49,15 @@ namespace Actuarius.Memory.ConcurrentBuffered
 
         public bool Put(TObject value)
         {
-            if (mRealObjectsNumber == mCapacity)
+            if (_realObjectsNumber == _capacity)
             {
                 return false;
             }
 
-            mPool[mRealObjectsNumber++] = value;
-            if (mRealObjectsNumber + mVirtualObjectsNumber > mCapacity)
+            _table[_realObjectsNumber++] = value;
+            if (_realObjectsNumber + _virtualObjectsNumber > _capacity)
             {
-                mVirtualObjectsNumber -= 1;
+                _virtualObjectsNumber -= 1;
             }
 
             return true;

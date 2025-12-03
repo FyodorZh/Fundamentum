@@ -8,28 +8,28 @@ namespace Actuarius.Memory.ConcurrentBuffered
 
         public readonly int ID;
 
-        private Bucket<TObject> mPart0;
-        private Bucket<TObject> mPart1;
+        private Bucket<TObject> _part0;
+        private Bucket<TObject> _part1;
 
         public Pool(int id, BucketSource<TObject> bucketSource)
         {
             mSource = bucketSource;
 
             ID = id;
-            mPart0 = mSource.GetFullBucket();
-            mPart1 = mSource.GetEmptyBucket();
+            _part0 = mSource.GetFullBucket();
+            _part1 = mSource.GetEmptyBucket();
         }
 
         public TObject Acquire(out bool failedToReturnEmptyBucket)
         {
             failedToReturnEmptyBucket = false;
 
-            if (!mPart1.TryPop(out var obj) && !mPart0.TryPop(out obj))
+            if (!_part1.TryPop(out var obj) && !_part0.TryPop(out obj))
             {
-                failedToReturnEmptyBucket = !mSource.ReturnEmptyBucket(mPart0);
-                mPart0 = mSource.GetFullBucket();
+                failedToReturnEmptyBucket = !mSource.ReturnEmptyBucket(_part0);
+                _part0 = mSource.GetFullBucket();
 
-                if (!mPart0.TryPop(out obj))
+                if (!_part0.TryPop(out obj))
                 {
                     throw new InvalidOperationException("Failed to construct object (1)");
                 }
@@ -43,14 +43,14 @@ namespace Actuarius.Memory.ConcurrentBuffered
             failedToReturnFullBucket = false;
             emptyBucketOverflow = false;
 
-            if (!mPart0.Put(obj) && !mPart1.Put(obj))
+            if (!_part0.Put(obj) && !_part1.Put(obj))
             {
                 // Нет места
 
-                failedToReturnFullBucket = !mSource.ReturnFullBucket(mPart1);
-                mPart1 = mSource.GetEmptyBucket();
+                failedToReturnFullBucket = !mSource.ReturnFullBucket(_part1);
+                _part1 = mSource.GetEmptyBucket();
 
-                emptyBucketOverflow = !mPart1.Put(obj);
+                emptyBucketOverflow = !_part1.Put(obj);
             }
         }
     }

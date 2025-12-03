@@ -7,12 +7,16 @@ namespace Actuarius.Memory
     public class BufferedPool<TObject> : IConcurrentPool<TObject>
         where TObject : class
     {
-        private readonly PoolAccessor<TObject> mBucketPairSource;
+        private readonly PoolAccessor<TObject> _multiPool;
+
+        public BufferedPool(int bucketSize, int distributionLevel, Func<TObject> acquire)
+            : this(bucketSize, distributionLevel, acquire, () => new TinyConcurrentQueue<Bucket<TObject>>())
+        {}
 
         public BufferedPool(int bucketSize, int distributionLevel, Func<TObject> ctor, Func<IConcurrentUnorderedCollection<Bucket<TObject>>> collectionConstructor)
         {
             var bucketSource = new BucketSource<TObject>(bucketSize, ctor, collectionConstructor);
-            mBucketPairSource = new PoolAccessor<TObject>(bucketSource, distributionLevel);
+            _multiPool = new PoolAccessor<TObject>(bucketSource, distributionLevel);
         }
 
         public TObject Acquire()
@@ -20,17 +24,17 @@ namespace Actuarius.Memory
             TObject obj;
 
             // Берём локальный бакет в руку
-            ConcurrentBuffered.Pool<TObject> local = mBucketPairSource.Get();
+            ConcurrentBuffered.Pool<TObject> localPool = _multiPool.Get();
 
             bool failedToReturnEmptyBucket;
 
             try
             {
-                obj = local.Acquire(out failedToReturnEmptyBucket);
+                obj = localPool.Acquire(out failedToReturnEmptyBucket);
             }
             finally
             {
-                mBucketPairSource.Return(local);
+                _multiPool.Return(localPool);
             }
 
             if (failedToReturnEmptyBucket)
@@ -49,17 +53,17 @@ namespace Actuarius.Memory
             }
 
             // Берём локальный бакет в руку
-            ConcurrentBuffered.Pool<TObject> localBuckets = mBucketPairSource.Get();
+            ConcurrentBuffered.Pool<TObject> localPool = _multiPool.Get();
 
             bool failedToReturnFullBucket;
             bool emptyBucketOverflow;
             try
             {
-                localBuckets.Release(obj, out failedToReturnFullBucket, out emptyBucketOverflow);
+                localPool.Release(obj, out failedToReturnFullBucket, out emptyBucketOverflow);
             }
             finally
             {
-                mBucketPairSource.Return(localBuckets);
+                _multiPool.Return(localPool);
             }
 
             if (failedToReturnFullBucket)

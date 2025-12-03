@@ -5,23 +5,23 @@ namespace Actuarius.Memory.ConcurrentBuffered
 {
     public class BucketSource<TObject>
     {
-        private readonly int mBucketSize;
-        private readonly Func<TObject> mObjectCtor;
+        private readonly int _bucketSize;
+        private readonly Func<TObject> _objectCtor;
 
-        private readonly IConcurrentUnorderedCollection<Bucket<TObject>> mFullBuckets;
-        private readonly IConcurrentUnorderedCollection<Bucket<TObject>> mEmptyBuckets;
+        private readonly IConcurrentUnorderedCollection<Bucket<TObject>> _fullBuckets;
+        private readonly IConcurrentUnorderedCollection<Bucket<TObject>> _emptyBuckets;
 
         public BucketSource(int bucketSize, Func<TObject> objectCtor, Func<IConcurrentUnorderedCollection<Bucket<TObject>>> ctor)
         {
-            mBucketSize = bucketSize;
-            mObjectCtor = objectCtor;
-            mFullBuckets = ctor.Invoke();
-            mEmptyBuckets = ctor.Invoke();
+            _bucketSize = bucketSize;
+            _objectCtor = objectCtor;
+            _fullBuckets = ctor.Invoke();
+            _emptyBuckets = ctor.Invoke();
         }
 
         public Bucket<TObject> GetFullBucket()
         {
-            if (!mFullBuckets.TryPop(out var bucket))
+            if (!_fullBuckets.TryPop(out var bucket))
             {
                 bucket = GetEmptyBucket();
                 bucket.LazyFill();
@@ -32,9 +32,9 @@ namespace Actuarius.Memory.ConcurrentBuffered
 
         public Bucket<TObject> GetEmptyBucket()
         {
-            if (!mEmptyBuckets.TryPop(out var bucket))
+            if (!_emptyBuckets.TryPop(out var bucket))
             {
-                bucket = new Bucket<TObject>(mBucketSize, mObjectCtor);
+                bucket = new Bucket<TObject>(_bucketSize, _objectCtor);
             }
 
             return bucket;
@@ -42,12 +42,12 @@ namespace Actuarius.Memory.ConcurrentBuffered
 
         public bool ReturnFullBucket(Bucket<TObject> bucket)
         {
-            return mFullBuckets.Put(bucket);
+            return _fullBuckets.Put(bucket);
         }
 
         public bool ReturnEmptyBucket(Bucket<TObject> bucket)
         {
-            return mEmptyBuckets.Put(bucket);
+            return _emptyBuckets.Put(bucket);
         }
     }
 }

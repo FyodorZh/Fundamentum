@@ -36,17 +36,17 @@ namespace Actuarius.Memory.ConcurrentBuffered
 #else
     internal class PoolAccessor<TObject>
     {
-        private readonly Pool<TObject>?[] mPools;
-        private readonly int mDistribution;
+        private readonly Pool<TObject>?[] _pools;
+        private readonly int _distribution;
 
         public PoolAccessor(BucketSource<TObject> bucketSource, int distributionLevel)
         {
-            mDistribution = Math.Max(2, distributionLevel);
+            _distribution = Math.Max(2, distributionLevel);
 
-            mPools = new Pool<TObject>[mDistribution];
-            for (int i = 0; i < mDistribution; ++i)
+            _pools = new Pool<TObject>[_distribution];
+            for (int i = 0; i < _distribution; ++i)
             {
-                mPools[i] = new Pool<TObject>(i, bucketSource);
+                _pools[i] = new Pool<TObject>(i, bucketSource);
             }
         }
 
@@ -54,9 +54,9 @@ namespace Actuarius.Memory.ConcurrentBuffered
         {
             while (true)
             {
-                for (int i = 0; i < mDistribution; ++i)
+                for (int i = 0; i < _distribution; ++i)
                 {
-                    var pool = Interlocked.Exchange(ref mPools[i], null);
+                    var pool = Interlocked.Exchange(ref _pools[i], null);
                     if (pool != null)
                     {
                         return pool;
@@ -66,12 +66,11 @@ namespace Actuarius.Memory.ConcurrentBuffered
                 //Log.e("LOCK on LOAD from thread {0}#{1} in {2}", Thread.CurrentThread.Name, Thread.CurrentThread.ManagedThreadId, GetType());
                 Thread.Sleep(0);
             }
-
         }
 
         public void Return(Pool<TObject> pool)
         {
-            mPools[pool.ID] = pool;
+            _pools[pool.ID] = pool;
         }
     }
 #endif
