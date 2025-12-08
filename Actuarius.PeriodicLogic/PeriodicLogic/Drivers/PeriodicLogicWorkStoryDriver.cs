@@ -1,4 +1,5 @@
 using System;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -123,7 +124,7 @@ namespace Actuarius.PeriodicLogic
                 {
                     return driver.Log;
                 }
-                return Log.StaticLogger;
+                return StaticLogger.Instance;
             }
         }
     }

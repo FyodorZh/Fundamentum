@@ -1,4 +1,6 @@
-﻿namespace Actuarius.PeriodicLogic
+﻿using Scriba;
+
+namespace Actuarius.PeriodicLogic
 {
     /// <summary>
     /// Отдаётся IPeriodicLogic для управления драйвером

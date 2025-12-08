@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -40,8 +41,7 @@ namespace Actuarius.PeriodicLogic
                 {
                     if (os.Version.Major > 6 || (os.Version.Major == 6 && os.Version.Minor >= 2)) // Windows 8 or higher.
                     {
-                        long filetime;
-                        GetSystemTimePreciseAsFileTime(out filetime);
+                        GetSystemTimePreciseAsFileTime(out _);
                         IsAvailable = true;
                     }
                 }
@@ -53,7 +53,7 @@ namespace Actuarius.PeriodicLogic
 
             if (!IsAvailable)
             {
-                Log.w("HighResoulutionDateTime is not supported!");
+                Log.w("HighResolutionDateTime is not supported!");
             }
         }
     }

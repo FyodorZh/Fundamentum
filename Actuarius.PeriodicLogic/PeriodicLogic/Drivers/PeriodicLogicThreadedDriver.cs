@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -28,13 +29,13 @@ namespace Actuarius.PeriodicLogic
         private static void IncDriversCount()
         {
             Interlocked.Increment(ref mActiveDriversCount);
-            global::Log.i("PeriodicLogicThreadedDriver working count: " + ActiveDriversCount);
+            Scriba.Log.i("PeriodicLogicThreadedDriver working count: " + ActiveDriversCount);
         }
 
         private static void DecDriversCount()
         {
             Interlocked.Decrement(ref mActiveDriversCount);
-            global::Log.i("PeriodicLogicThreadedDriver working count: " + ActiveDriversCount);
+            Scriba.Log.i("PeriodicLogicThreadedDriver working count: " + ActiveDriversCount);
         }
 
         public ILogger Log { get; private set; }
@@ -54,7 +55,7 @@ namespace Actuarius.PeriodicLogic
             mThread = maxStackSizeKb == 0 ? new Thread(Work) : new Thread(Work, maxStackSizeKb * 1024); // Мона не понимает 0 как дефолтное значение размера стэка
             mThread.IsBackground = true;
 
-            Log = global::Log.StaticLogger;
+            Log = StaticLogger.Instance;
         }
 
         public DeltaTime Period

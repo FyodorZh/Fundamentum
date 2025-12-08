@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Actuarius.Collections;
 using Actuarius.ConcurrentPrimitives;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -30,7 +31,7 @@ namespace Actuarius.PeriodicLogic
             mPendingToAppend = new ConcurrentQueueValve<PeriodicLogicManualDriver>(new TinyConcurrentQueue<PeriodicLogicManualDriver>(), d => d.StopAndTick());
 
             mDriver = driver;
-            Log = global::Log.StaticLogger;
+            Log = StaticLogger.Instance;
             Count = 0;
 
             mWorkAggregator = monitor != null ? new WorkTimeAggregator(monitor, 1) : null;

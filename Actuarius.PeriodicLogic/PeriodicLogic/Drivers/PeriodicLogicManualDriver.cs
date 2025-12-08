@@ -1,4 +1,5 @@
 ﻿using System;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -31,7 +32,7 @@ namespace Actuarius.PeriodicLogic
             mState = State.Constructed;
             mPeriod = period;
             mInvokeLogicAction = invokeLogicAction;
-            mLogger = global::Log.StaticLogger;
+            mLogger = StaticLogger.Instance;
         }
 
         public DeltaTime Period => mPeriod;

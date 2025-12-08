@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using Scriba;
 
 namespace Actuarius.PeriodicLogic
 {
@@ -33,7 +34,7 @@ namespace Actuarius.PeriodicLogic
         {
             mOnTickDelay = onTickDelay;
             mLogicQuantLength = logicQuantLength;
-            Log = global::Log.StaticLogger;
+            Log = StaticLogger.Instance;
         }
 
         public DeltaTime Period
