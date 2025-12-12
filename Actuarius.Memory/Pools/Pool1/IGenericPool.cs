@@ -1,12 +1,12 @@
 ﻿namespace Actuarius.Memory
 {
-    public interface IGenericPool<in TResourceRestriction, in TParam>
+    public interface IGenericPool<in TParam>
     {
         IPool<TResource, TParam> ShowTypedPool<TResource>();
-        (TResource resource, IPoolSink<TResource> poolSink) Acquire<TResource>(TParam param) where TResource : TResourceRestriction;
+        (TResource resource, IPoolSink<TResource> poolSink) Acquire<TResource>(TParam param);
     }
     
-    public interface IGenericConcurrentPool<in TResourceRestriction, in TParam> : IGenericPool<TResourceRestriction, TParam>
+    public interface IGenericConcurrentPool<in TParam> : IGenericPool<TParam>
     {
         new IConcurrentPool<TResource, TParam> ShowTypedPool<TResource>();
     }
