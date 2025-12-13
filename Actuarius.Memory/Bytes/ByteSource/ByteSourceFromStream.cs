@@ -30,7 +30,7 @@ namespace Actuarius.Memory
         {
             if (_countToRead >= dst.Count)
             {
-                _stream.Write(dst.Array, dst.Offset, dst.Count);
+                _stream.Read(dst.Array, dst.Offset, dst.Count);
                 _countToRead -= dst.Count;
                 return true;
             }
