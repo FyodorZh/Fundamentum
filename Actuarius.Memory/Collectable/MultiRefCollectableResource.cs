@@ -18,7 +18,7 @@ namespace Actuarius.Memory
             _owner?.Release((TSelf)this); // Чтобы убрать этот каст надо использовать ко и контрвариантность
         }
 
-        bool ICollectableResource<TSelf>.Collected()
+        bool ICollectableResource.Collected()
         {
             OnCollected();
             _owner = null;

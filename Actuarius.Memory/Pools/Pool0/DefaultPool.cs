@@ -4,7 +4,7 @@ namespace Actuarius.Memory
         where TResource : class, new()
     {
         public DefaultPool()
-            : base(() => new())
+            : base(() => new(), null)
         {
         }
     }

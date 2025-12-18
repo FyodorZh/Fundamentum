@@ -60,7 +60,7 @@ namespace Actuarius.Memory
         public MemoryRental()
         {
             ByteArraysPool = new ByteArrayConcurrentPool(GetArrayPool<byte>());
-            CollectablePool = new CollectablePool(() => new LimitedConcurrentQueue<object>(100));
+            CollectablePool = new CollectablePool(() => new LimitedConcurrentQueue<ICollectableResource>(100));
 
             SmallObjectsPool = new GenericConcurrentPool(new SynchronizedConcurrentDictionary<int, object>(), 100, 10);
             BigObjectsPool = new GenericConcurrentPool(new SynchronizedConcurrentDictionary<int, object>(), 10, 2);

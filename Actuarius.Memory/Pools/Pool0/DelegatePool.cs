@@ -8,13 +8,13 @@ namespace Actuarius.Memory
     {
         private readonly Func<TResource> _ctor;
         
-        public DelegatePool(Func<TResource> resourceCtor)
-            : this(resourceCtor, new CycleQueue<TResource>())
+        public DelegatePool(Func<TResource> resourceCtor, Func<TResource, bool>? deInitializer)
+            : this(resourceCtor, new CycleQueue<TResource>(), deInitializer)
         {
         }
 
-        public DelegatePool(Func<TResource> resourceCtor, IUnorderedCollection<TResource> pool)
-            :base(pool)
+        public DelegatePool(Func<TResource> resourceCtor, IUnorderedCollection<TResource> pool, Func<TResource, bool>? deInitializer)
+            :base(pool, deInitializer)
         {
             _ctor = resourceCtor;
         }

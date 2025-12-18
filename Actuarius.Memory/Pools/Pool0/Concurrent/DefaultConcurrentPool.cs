@@ -6,7 +6,7 @@ namespace Actuarius.Memory
         where TResource : class, new()
     {
         public DefaultConcurrentPool(IConcurrentUnorderedCollection<TResource> pool)
-            : base(() => new(), pool)
+            : base(() => new(), pool, null)
         {
         }
     }

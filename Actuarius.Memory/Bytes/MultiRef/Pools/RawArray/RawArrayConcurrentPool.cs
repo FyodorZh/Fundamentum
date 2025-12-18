@@ -1,16 +1,20 @@
+using System;
 using Actuarius.Collections;
 
 namespace Actuarius.Memory
 {
     public class RawArrayConcurrentPool<T> : ConcurrentPool<T[], int>
     {
+        private readonly Func<T[], bool>? _deInitializer;
+
         public delegate int ArrayPoolCapacityDelegate(int arraySize);
         
         private readonly ArrayPoolCapacityDelegate _capacityDelegate;
 
-        public RawArrayConcurrentPool(int bucketCapacity)
+        public RawArrayConcurrentPool(int bucketCapacity, Func<T[], bool>? deInitializer)
             : this(_ => bucketCapacity)
         {
+            _deInitializer = deInitializer;
         }
         
         public RawArrayConcurrentPool(ArrayPoolCapacityDelegate capacityDelegate)
@@ -24,7 +28,7 @@ namespace Actuarius.Memory
             int capacity = _capacityDelegate(classId);
             if (capacity > 0)
             {
-                return new FixedLengthRawArrayConcurrentPool<T>(classId, capacity);
+                return new FixedLengthRawArrayConcurrentPool<T>(classId, capacity, _deInitializer);
             }
 
             return new DelegateNoPool<T[]>(() => new T[classId]);

@@ -8,8 +8,8 @@ namespace Actuarius.Memory
     {
         private readonly Func<TResource> _ctor;
 
-        public ConcurrentDelegatePool(Func<TResource> resourceCtor, IConcurrentUnorderedCollection<TResource> pool)
-            :base(pool)
+        public ConcurrentDelegatePool(Func<TResource> resourceCtor, IConcurrentUnorderedCollection<TResource> pool, Func<TResource, bool>? deInitializer)
+            :base(pool, deInitializer)
         {
             _ctor = resourceCtor;
         }

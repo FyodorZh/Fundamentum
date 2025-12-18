@@ -1,4 +1,5 @@
-﻿using Actuarius.Collections;
+﻿using System;
+using Actuarius.Collections;
 
 namespace Actuarius.Memory
 {
@@ -6,8 +7,8 @@ namespace Actuarius.Memory
     {
         private readonly int _length;
         
-        public FixedLengthRawArrayConcurrentPool(int length, int capacity)
-            :base(new LimitedConcurrentQueue<T[]>(capacity))
+        public FixedLengthRawArrayConcurrentPool(int length, int capacity, Func<T[], bool>? deInitializer)
+            :base(new LimitedConcurrentQueue<T[]>(capacity), deInitializer)
         {
             _length = length;
         }
