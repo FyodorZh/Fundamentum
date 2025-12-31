@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Scriba" Version="0.2.0-dev.3" />
+      <PackageReference Include="Scriba" Version="0.2.0-dev.6" />
     </ItemGroup>
 
 </Project>
