@@ -12,8 +12,10 @@ namespace Actuarius.Memory
             : this(array, 0, array.Length)
         {}
         
-        public StaticReadOnlyByteArray(byte[] array, int offset, int length)
+        public StaticReadOnlyByteArray(byte[] array, int offset = 0, int length = -1)
         {
+            length = length < 0 ? array.Length - offset : length;
+            
             if (!ArrayHelper.CheckRange(array.Length, offset, length))
             {
                 throw new ArgumentOutOfRangeException();

@@ -2,7 +2,7 @@ namespace Actuarius.Memory
 {
     public class StaticByteArray : StaticReadOnlyByteArray, IMultiRefByteArray
     {
-        public StaticByteArray(byte[] array, int offset, int length)
+        public StaticByteArray(byte[] array, int offset = 0, int length = -1)
             : base(array, offset, length)
         {
         }
