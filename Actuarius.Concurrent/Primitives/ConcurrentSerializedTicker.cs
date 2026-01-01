@@ -1,6 +1,6 @@
 using System;
 
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     /// <summary>
     /// Сериализирует конкурентные вызовы Tick().

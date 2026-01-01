@@ -1,4 +1,4 @@
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     /// <summary>
     /// Тредобезопасная стейтмашина реализующая логику информирования об отложенном желании сделать _одноразовое_ действие

@@ -1,6 +1,6 @@
 using System;
 
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     /// <summary>
     /// Позволяет многим потокам, независимо друг от друга открывать и закрывать критические секции

@@ -1,6 +1,6 @@
 using System.Threading;
 
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     /// <summary>
     /// Хранит данные, позволяет вычитывать и записывать их атомарно

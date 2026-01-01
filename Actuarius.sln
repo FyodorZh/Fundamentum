@@ -10,9 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DE512524
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Memory", "Actuarius.Memory\Actuarius.Memory.csproj", "{235F98D4-EC46-4967-857A-02BF8F27F1EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.ConcurrentPrimitives", "Actuarius.ConcurrentPrimitives\Actuarius.ConcurrentPrimitives.csproj", "{5B448574-2298-4BD1-80C9-F3A04E63588A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Operarius", "Operarius\Operarius.csproj", "{502D7E97-9800-4E88-BC39-F6198D6C1550}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Actuarius.Concurrent", "Actuarius.Concurrent\Actuarius.Concurrent.csproj", "{E3A66F29-57AC-4E01-9F41-50476D5538B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,14 +34,10 @@ Global
 		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235F98D4-EC46-4967-857A-02BF8F27F1EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B448574-2298-4BD1-80C9-F3A04E63588A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{502D7E97-9800-4E88-BC39-F6198D6C1550}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{502D7E97-9800-4E88-BC39-F6198D6C1550}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{502D7E97-9800-4E88-BC39-F6198D6C1550}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{502D7E97-9800-4E88-BC39-F6198D6C1550}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A66F29-57AC-4E01-9F41-50476D5538B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A66F29-57AC-4E01-9F41-50476D5538B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A66F29-57AC-4E01-9F41-50476D5538B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A66F29-57AC-4E01-9F41-50476D5538B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E365043-F6EB-4738-A0DA-3DF565C5AD2E} = {DE512524-D84C-4442-8D5B-12AA612CDDA2}

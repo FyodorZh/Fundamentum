@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     public abstract class InvariantChecker<TState>
         where TState : struct

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Actuarius.Collections;
 
-namespace Actuarius.ConcurrentPrimitives
+namespace Actuarius.Concurrent
 {
     public class SingleReaderWriterConcurrentUnorderedCollectionValve<TData> : ISingleReaderWriterConcurrentUnorderedCollection<TData>
     {
